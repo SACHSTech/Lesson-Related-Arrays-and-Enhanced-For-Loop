@@ -5,30 +5,58 @@ This lesson covers two additional techniques to manipulate and traverse arrays.
 ## 1. Related Arrays
 
 ### Goal
-Store connected pieces of data using two (or more) arrays whose indices correspond.
+Store connected pieces of data using two (or more) arrays whose **indices correspond**, allowing us to treat the arrays together as a unified data structure.
 
-### Design Approach
+## Design Approach
 Two arrays are considered *related* when element `i` in one array refers to data that matches element `i` in another.  
 This lets us keep separate lists (e.g., names and scores) but still treat each pair as a single “record.”
 
-Typical uses:
-- `firstName[]` + `lastName[]`
-- `players[]` + `scores[]`
-- `months[]` + `daysInMonth[]`
+Typical use cases:
+- `firstName[]` and `lastName[]`
+- `players[]` and `scores[]`
+- `products[]` and `prices[]`
+- `countries[]` and `populations[]`
+- `cities[]` and `temperatures[]`
 
-### Example: Players and Scores
+When using related arrays:
+- ensure both arrays have the same length
+- always use the **same index variable** when traversing them
+- use **regular for loops**, not enhanced for loops, because you need index access
+
+#### Example 1: Student Names and Grades
 
 ```java
-String[] players = {"Ana", "Ben", "Ming", "Lila"};
-int[] scores = {12, 22, 18, 31};
+String[] names = {"Ava", "Liam", "Noah", "Zoe"};
+int[] grades = {85, 92, 77, 90};
 
-// Print each name with matching score
-for (int i = 0; i < players.length; i++) {
-    System.out.println(players[i] + ": " + scores[i]);
+for (int i = 0; i < names.length; i++) {
+    System.out.println(names[i] + " scored " + grades[i]);
 }
 ```
 
-### Why this technique matters
+#### Example 2: Product and Price Lookup
+
+```java
+String[] products = {"Milk", "Eggs", "Bread", "Apples"};
+double[] prices = {2.99, 3.49, 2.50, 4.25};
+
+for (int i = 0; i < products.length; i++) {
+    System.out.println(products[i] + " costs $" + prices[i]);
+}
+```
+
+#### Example 3: Country and Population
+
+```java
+String[] countries = {"Canada", "Japan", "Brazil"};
+int[] populationMillions = {38, 125, 214};
+
+for (int i = 0; i < countries.length; i++) {
+    System.out.println(countries[i] + ": " + populationMillions[i] + " million");
+}
+```
+
+### Why Related Arrays Matter
 Related arrays let us keep different pieces of information connected by using the same index. This is useful when the data naturally comes in pairs or groups.
 
 When applying the technique of related arrays, make sure to:
